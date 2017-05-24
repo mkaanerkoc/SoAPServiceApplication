@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="EnvidasUzunDere" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=LAPTOP-H740Q104;Initial Catalog=EnvidasUzunDere;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="EnvidasUzunDereConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Channel" Member="Channels">
+    <Type Name="Channel">
+      <Column Name="number" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="saveCol" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="protocol" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="state" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="units" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="serial" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="avgType" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="lowRange" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="highRange" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="lowVolt" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="highVolt" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="calcEnable" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="calcString" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="calcVars" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="monCh" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="channelEX" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="displayFormat" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="aENG" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="bENG" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="threshold" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="useCalibCorrection" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="zero" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="factor" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="EUcorrect" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="spanDriftOfRef" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="zeroDrift" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="spanOffset" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="logEnable" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="chType" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="outEnable" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="outProtocol" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="outMonitor" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="outLowVolt" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="outHiVolt" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="rangeValid" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="rateOfChangeValid" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="rateOfChange" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="viewPos" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="address" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="uniPolar" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="calibInvalidate" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="calibDigitalOutput" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="spanCalibValidType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="factorLow" Type="System.Decimal" DbType="Decimal(14,6)" CanBeNull="true" />
+      <Column Name="factorHigh" Type="System.Decimal" DbType="Decimal(14,6)" CanBeNull="true" />
+      <Column Name="correctionZeroFactor" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="Poc" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="MethodCode" Type="System.String" DbType="VarChar(3) NOT NULL" CanBeNull="false" />
+      <Column Name="rangeDeviationLow" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="rangeDeviationHigh" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="RangeValidType" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="calibDoubleInvalidate" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="UseOOCStatus" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="UseOOC_Tries" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UseCalibGap" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="UseCalibGapHours" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="WebDisplay" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="DirectiveELV" Type="System.Decimal" DbType="Decimal(14,6)" CanBeNull="true" />
+      <Column Name="DailyELV" Type="System.Decimal" DbType="Decimal(14,6)" CanBeNull="true" />
+      <Column Name="ELVAverage" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UseConstant" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ConstantValidType" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ConstantSamples" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ConstantValue" Type="System.Decimal" DbType="Decimal(14,6)" CanBeNull="true" />
+      <Column Name="PollutantType" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ConstantByTimebase" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="threshold24hr" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Association Name="InstantData_Channel" Member="InstantData" ThisKey="number" OtherKey="channel" Type="InstantData" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.InstantData" Member="InstantDatas">
+    <Type Name="InstantData">
+      <Column Name="Date_Time" Type="System.DateTime" DbType="DateTime NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="channel" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="value" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="InstantData_Channel" Member="Channels" ThisKey="channel" OtherKey="number" Type="Channel" Cardinality="One" />
+    </Type>
+  </Table>
+</Database>
