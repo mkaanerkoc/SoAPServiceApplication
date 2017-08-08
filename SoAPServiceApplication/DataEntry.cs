@@ -7,12 +7,13 @@ namespace SoAPServiceApplication
 {
     public class DataEntry
     {
-        public int channel { get; set; }
-        public DateTime dateTime { get; set; }
-        public String units { get; set; }
-        public String channelName { get; set; }
-        public double value { get; set; }
+        public int channelID { get; set; }
+        public int saveCol { get; set; }
         public int status { get; set; }
-        //private int saveCol;
+        public double value { get; set; }
+        public string channelName { get; set; }
+        public string siteName { get; set; }
+        public string units { get; set; }
+        public DateTime Date_Time { get; set; }
     }
 }

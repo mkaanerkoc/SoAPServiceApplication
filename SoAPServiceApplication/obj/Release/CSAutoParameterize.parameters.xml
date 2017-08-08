@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="EnvidasUzunDereConnectionString-Web.config Connection String" description="EnvidasUzunDereConnectionString Connection String used in web.config by the application to access the database." defaultValue="Data Source=LAPTOP-H740Q104;Initial Catalog=EnvidasUzunDere;Integrated Security=True" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Kaan\\documents\\visual\ studio\ 2015\\Projects\\SoAPServiceApplication\\SoAPServiceApplication\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='EnvidasUzunDereConnectionString']/@connectionString" />
+  </parameter>
+</parameters>

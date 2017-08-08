@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="Default Web Site/SoAPServiceApplication" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\Kaan\\documents\\visual\ studio\ 2015\\Projects\\SoAPServiceApplication\\SoAPServiceApplication\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\Kaan\\documents\\visual\ studio\ 2015\\Projects\\SoAPServiceApplication\\SoAPServiceApplication\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="EnvidasUzunDereConnectionString-Web.config Connection String" description="" value="Data Source=LAPTOP-H740Q104;Initial Catalog=EnvidasUzunDere;Integrated Security=True" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Kaan\\documents\\visual\ studio\ 2015\\Projects\\SoAPServiceApplication\\SoAPServiceApplication\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='EnvidasUzunDereConnectionString']/@connectionString" />
+  </parameter>
+</parameters>
