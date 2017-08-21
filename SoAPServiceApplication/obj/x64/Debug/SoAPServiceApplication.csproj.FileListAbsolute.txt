@@ -28,6 +28,6 @@ C:\Users\Kaan\documents\visual studio 2015\Projects\SoAPServiceApplication\SoAPS
 C:\Users\Kaan\documents\visual studio 2015\Projects\SoAPServiceApplication\SoAPServiceApplication\bin\Microsoft.AI.WindowsServer.xml
 C:\Users\Kaan\documents\visual studio 2015\Projects\SoAPServiceApplication\SoAPServiceApplication\bin\Microsoft.ApplicationInsights.xml
 C:\Users\Kaan\documents\visual studio 2015\Projects\SoAPServiceApplication\SoAPServiceApplication\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\Kaan\documents\visual studio 2015\Projects\SoAPServiceApplication\SoAPServiceApplication\obj\x64\Release\SoAPServiceApplication.dll
-C:\Users\Kaan\documents\visual studio 2015\Projects\SoAPServiceApplication\SoAPServiceApplication\obj\x64\Release\SoAPServiceApplication.pdb
-C:\Users\Kaan\documents\visual studio 2015\Projects\SoAPServiceApplication\SoAPServiceApplication\obj\x64\Release\SoAPServiceApplication.csprojResolveAssemblyReference.cache
+C:\Users\Kaan\documents\visual studio 2015\Projects\SoAPServiceApplication\SoAPServiceApplication\obj\x64\Debug\SoAPServiceApplication.csprojResolveAssemblyReference.cache
+C:\Users\Kaan\documents\visual studio 2015\Projects\SoAPServiceApplication\SoAPServiceApplication\obj\x64\Debug\SoAPServiceApplication.dll
+C:\Users\Kaan\documents\visual studio 2015\Projects\SoAPServiceApplication\SoAPServiceApplication\obj\x64\Debug\SoAPServiceApplication.pdb

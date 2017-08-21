@@ -24,7 +24,7 @@ namespace SoAPServiceApplication
     {
         private static SqlConnection myConnection;
         private static List<string> tableNames;
-        private static List<string> siteNames;
+        private static List<SiteEntry> siteList;
         private static List<Channel> channelList;
         private static List<DataEntry> dataEntryList;
         //const string  connectString =         "Data Source=LAPTOP-H740Q104;Initial Catalog=EnvidasUzunDere;Integrated Security=True";
@@ -35,23 +35,61 @@ namespace SoAPServiceApplication
         {
             channelList = new List<Channel>();
             dataEntryList = new List<DataEntry>();
-            siteNames = new List<string>();
+            siteList = new List<SiteEntry>();
             tableNames = new List<string>();
             string cString = getConnectionString();
             System.Diagnostics.Debug.WriteLine("SomeText");
             ConnectSQL(cString);
             getSiteNames();
             getChannelsData();
+            //SUREKLI S0 PATLIYOR
             tableNames = GetTableNames("S0", "RAW", "01");
             dataEntryList.Clear();
             for (int i = 0; i < tableNames.Count; i++)
             {
                 System.Diagnostics.Debug.WriteLine(tableNames[i]);
                 //Console.WriteLine("Table Names : {0}", tableNames[i]);
-                ReadTable(tableNames[i], siteNames[i]);
+                ReadTable(tableNames[i], siteList[i]);
 
             }
+            myConnection.Close();
             return dataEntryList;
+        }
+        [WebMethod]
+        public List<SiteEntry> GetSiteNames()
+        {
+            channelList = new List<Channel>();
+            dataEntryList = new List<DataEntry>();
+            siteList = new List<SiteEntry>();
+            tableNames = new List<string>();
+            string cString = getConnectionString();
+            ConnectSQL(cString);
+            getSiteNames();
+          
+            return siteList;
+        }
+        [WebMethod]
+        public List<Channel> GetChannelData()
+        {
+            channelList = new List<Channel>();
+            dataEntryList = new List<DataEntry>();
+            siteList = new List<SiteEntry>();
+            tableNames = new List<string>();
+            string cString = getConnectionString();
+            ConnectSQL(cString);
+            getSiteNames();
+            getChannelsData();
+            return channelList;
+        }
+        [WebMethod]
+        public List<string> GetDataTablesData()
+        {
+            tableNames = new List<string>();
+            string cString = getConnectionString();
+            ConnectSQL(cString);
+            //SUREKLI S0 PATLIYOR
+            tableNames = GetTableNames("S0", "RAW", "01");
+            return tableNames;
         }
         private static String getConnectionString()
         {
@@ -92,17 +130,18 @@ namespace SoAPServiceApplication
         private static void getSiteNames()
         {
 
-            siteNames.Clear();
+            siteList.Clear();
             SqlDataReader myReader = null;
             SqlCommand myCommand = new SqlCommand("SELECT * FROM Site ORDER BY number", myConnection);
             myReader = myCommand.ExecuteReader();
+            //TODO: Site tablosundan çekerken siteNo yu da objeye ekle
             while (myReader.Read())
             {
-                siteNames.Add(myReader["name"].ToString());
+                siteList.Add(new SiteEntry(myReader["name"].ToString(),Convert.ToInt16(myReader["number"])));
             }
             myReader.Close();
         }
-        private static void ReadTable(string tableName, string siteName)
+        private static void ReadTable(string tableName, SiteEntry siteEntry)
         {
             try
             {
@@ -129,7 +168,7 @@ namespace SoAPServiceApplication
                             System.Diagnostics.Debug.WriteLine(myReader.GetName(i));
                             DataEntry entry = new DataEntry();
 
-                            Channel ch = findChannel(channelID);
+                            Channel ch = findChannel(channelID,siteEntry.siteID);
                             if (!object.ReferenceEquals(null, ch))
                             {
 
@@ -139,7 +178,7 @@ namespace SoAPServiceApplication
                                 entry.channelName = ch.name;
                                 //entry.state = (int)myReader[
                                 entry.Date_Time = logDateTime;
-                                entry.siteName = siteName;
+                                entry.siteName = ch.siteName;
                                 entry.channelID = ch.channelID;
                                 entry.units = ch.units;
                                 entry.saveCol = ch.saveCol;
@@ -157,7 +196,7 @@ namespace SoAPServiceApplication
                         }
                     }
                 }
-                myConnection.Close();
+
                 myReader.Close();
                 return;
             }
@@ -171,7 +210,7 @@ namespace SoAPServiceApplication
         private static void getChannelsData()
         {
             SqlDataReader myReader = null;
-            SqlCommand myCommand = new SqlCommand("select * from  Channel", myConnection);
+            SqlCommand myCommand = new SqlCommand("select * from  viewChannel", myConnection);
             myReader = myCommand.ExecuteReader();
             channelList.Clear();
             while (myReader.Read())
@@ -182,19 +221,28 @@ namespace SoAPServiceApplication
                 tChannel.units = (string)myReader["units"];
                 tChannel.name = (string)myReader["name"];
                 channelList.Add(tChannel);
-                System.Diagnostics.Debug.Write("Channel Name : ");
-                System.Diagnostics.Debug.WriteLine(tChannel.name);
                 //Console.WriteLine("Channel Info : {0}--{1}", myReader["saveCol"], myReader["name"]);
+            }
+            myReader.Close();
+            myCommand = new SqlCommand("select * from  viewChannelBySite", myConnection);
+            myReader = myCommand.ExecuteReader();
+            while (myReader.Read())
+            {
+                Channel tChannel = findChannel((int)myReader["saveCol"]);
+                tChannel.siteID = (int)myReader["SiteNumber"];
+                tChannel.siteName = (string)myReader["Site"];
+                //channelList.(tChannel);
+                Console.WriteLine("Channel Info : SiteID : {0} , SiteName:{1}, ChannelName:{2}", tChannel.siteID, tChannel.siteName, tChannel.name);
             }
             myReader.Close();
         }
 
-        private static Channel findChannel(int id)
+        private static Channel findChannel(int id,int siteid)
         {
             Channel c =null;
             for (int i = 0; i < channelList.Count; i++)
             {
-                if (id == channelList[i].saveCol)
+                if (id == channelList[i].saveCol && siteid == channelList[i].siteID)
                 {
                     c = channelList[i];
                     break;
@@ -202,7 +250,19 @@ namespace SoAPServiceApplication
             }
             return c;
         }
-
+        private static Channel findChannel(int id)
+        {
+            Channel c = null;
+            for (int i = 0; i < channelList.Count; i++)
+            {
+                if (id == channelList[i].saveCol )
+                {
+                    c = channelList[i];
+                    break;
+                }
+            }
+            return c;
+        }
         private static void printDataEntryList()
         {
             for (int i = 0; i < dataEntryList.Count; i++)

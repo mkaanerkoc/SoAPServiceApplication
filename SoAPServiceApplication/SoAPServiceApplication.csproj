@@ -120,6 +120,7 @@
     <Compile Include="Channel.cs" />
     <Compile Include="DataEntry.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SiteEntry.cs" />
     <Compile Include="SoAPService.asmx.cs">
       <DependentUpon>SoAPService.asmx</DependentUpon>
       <SubType>Component</SubType>

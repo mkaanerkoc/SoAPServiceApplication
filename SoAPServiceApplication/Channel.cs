@@ -11,5 +11,7 @@ namespace SoAPServiceApplication
         public int saveCol { get; set; }
         public string name { get; set; }
         public string units { get; set; }
+        public int siteID { get; set; }
+        public string siteName { get; set; }
     }
 }
