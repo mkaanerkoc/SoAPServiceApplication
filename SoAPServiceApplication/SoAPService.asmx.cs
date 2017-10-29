@@ -125,6 +125,7 @@ namespace SoAPServiceApplication
                     }
                 }
             }
+            TableNames.Sort();
             return TableNames;
         }
         private static void getSiteNames()
